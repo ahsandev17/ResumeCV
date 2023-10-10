@@ -39,5 +39,6 @@ jobs:
       - name: Run script.sh
         working-directory: /var/www/html
         run: |
-          chmod +x script.sh
+          cd /var/www/html
+          chmod 777 script.sh
           ./script.sh
