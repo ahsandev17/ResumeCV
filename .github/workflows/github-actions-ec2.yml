@@ -39,5 +39,5 @@ jobs:
       - name: Run script.sh
         working-directory: /var/www/html
         run: |
-          cd /var/www/html
-          sudo touch aqua.txt
+          /usr/bin/bash -e -c "cd /var/www/html"
+          /usr/bin/bash -e -c "sudo touch aqua.txt"
