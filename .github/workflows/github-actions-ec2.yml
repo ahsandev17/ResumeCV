@@ -38,12 +38,12 @@ jobs:
             sudo mv * /var/www/html
 
       - name: Run custom script on EC2 instance
+        working-directory: .github/scripts/
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST_DNS }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            # Run the script from the file
-            chmod +x .github/scripts/create_file_names.sh
-            ./.github/scripts/create_file_names.sh
+            chmod +x create_file_names.sh
+            ./create_file_names.sh
