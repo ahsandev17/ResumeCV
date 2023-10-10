@@ -39,5 +39,5 @@ jobs:
       - name: Run script.sh
         working-directory: /var/www/html
         run: |
-          chmod +x /var/www/html/script.sh
-          ./script.sh
+          cd /var/www/html
+          touch aqua.txt
