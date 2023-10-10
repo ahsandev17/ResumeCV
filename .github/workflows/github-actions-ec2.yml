@@ -34,11 +34,10 @@ jobs:
             sudo apt-get install -y apache2
             sudo systemctl start apache2
             sudo systemctl enable apache2
-            cd home
-            sudo mv * /var/www/html
+            cd /var/www/html
 
-      - name: Run custom script on EC2 instance
-        working-directory: .github/scripts/
+      - name: Run script.sh
+        working-directory: /var/www/html
         run: |
-          chmod +x create_file_names.sh
-          ./create_file_names.sh
+          chmod +x script.sh
+          ./script.sh
