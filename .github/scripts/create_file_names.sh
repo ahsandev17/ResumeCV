@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Get a list of all the files in the /var/www/html directory
 files=$(ls /var/www/html)
 
 # Create a file called file_names.txt
