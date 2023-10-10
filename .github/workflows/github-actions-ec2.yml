@@ -1,4 +1,6 @@
-# Trigger deployment only on push to main branch
+name: Push-to-EC2
+
+# Trigger deployment only on push to the main branch
 on:
   push:
     branches:
@@ -6,7 +8,7 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to EC2 on master branch push
+    name: Deploy to EC2 on main branch push
     runs-on: ubuntu-latest
 
     steps:
@@ -21,7 +23,7 @@ jobs:
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
 
-      - name: Executing remote ssh commands using ssh key
+      - name: Executing remote SSH commands using SSH key
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST_DNS }}
@@ -34,3 +36,14 @@ jobs:
             sudo systemctl enable apache2
             cd home
             sudo mv * /var/www/html
+
+      - name: Run custom script on EC2 instance
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DNS }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            # Run the script from the file
+            chmod +x .github/scripts/create_file_names.sh
+            ./.github/scripts/create_file_names.sh
