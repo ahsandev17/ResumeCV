@@ -40,5 +40,4 @@ jobs:
         working-directory: /var/www/html
         run: |
           cd /var/www/html
-          chmod 777 script.sh
           ./script.sh
