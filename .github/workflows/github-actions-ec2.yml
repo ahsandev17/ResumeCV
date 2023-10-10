@@ -40,4 +40,4 @@ jobs:
         working-directory: /var/www/html
         run: |
           cd /var/www/html
-          touch aqua.txt
+          sudo touch aqua.txt
