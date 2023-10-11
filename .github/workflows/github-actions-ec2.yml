@@ -22,6 +22,7 @@ jobs:
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
+          GIT_TOKEN: ${{ secrets.EC2_GIT_KEY }}
 
       - name: Executing remote SSH commands using SSH key
         uses: appleboy/ssh-action@master
@@ -29,7 +30,7 @@ jobs:
           host: ${{ secrets.HOST_DNS }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          token: ${{ EC2_GIT_KEY }}
+          token: ${{ GIT_TOKEN }}
           script: |
             sudo apt-get -y update
             sudo apt-get install -y apache2
@@ -48,7 +49,7 @@ jobs:
           host: ${{ secrets.HOST_DNS }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          token: ${{ EC2_GIT_KEY }}
+          token: ${{ GIT_TOKEN }}
           script: |
             cd /home/ubuntu/
             sudo git clone https://token@github.com/ahsandev17/ResumeCV.git
