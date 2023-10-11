@@ -30,7 +30,7 @@ jobs:
           host: ${{ secrets.HOST_DNS }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          token: ${{ GIT_TOKEN }}
+          token: ${{ secrets.EC2_GIT_KEY }}
           script: |
             sudo apt-get -y update
             sudo apt-get install -y apache2
@@ -49,6 +49,7 @@ jobs:
           host: ${{ secrets.HOST_DNS }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          token: ${{ GIT_TOKEN }}
+          token: ${{ secrets.EC2_GIT_KEY }}
           script: |
-            sudo ls
+            # cd /home/ubuntu/
+            # sudo git clone https://token@github.com/ahsandev17/ResumeCV.git
