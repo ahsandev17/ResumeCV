@@ -52,4 +52,4 @@ jobs:
           token: ${{ secrets.EC2_GIT_KEY }}
           script: |
              cd /home/ubuntu/
-             sudo git clone https://$GIT_TOKEN@github.com/ahsandev17/ResumeCV.git
+             sudo git clone https://${{ secrets.GITHUB_TOKEN }}@github.com/ahsandev17/ResumeCV.git
