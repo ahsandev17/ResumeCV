@@ -36,7 +36,7 @@ jobs:
             sudo systemctl enable apache2
             cd /var/www/html
             sudo ./script.sh
-            sudo touch gitFile.txt
+            sudo touch gitFile3.txt
             
       - name: another script
         uses: appleboy/ssh-action@master
