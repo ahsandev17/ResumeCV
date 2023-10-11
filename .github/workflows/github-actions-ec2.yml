@@ -1,14 +1,15 @@
 name: Push-to-EC2
 
-# Trigger deployment only on push to the main branch
+# Trigger deployment on push to both main and staging branches
 on:
   push:
     branches:
       - main
+      - staging
 
 jobs:
   deploy:
-    name: Deploy to EC2 on main branch push
+    name: Deploy to EC2 on main or staging branch push
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +23,6 @@ jobs:
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
-          GIT_TOKEN: ${{ secrets.EC2_GIT_KEY }}
 
       - name: Executing remote SSH commands using SSH key
         uses: appleboy/ssh-action@master
@@ -30,26 +30,16 @@ jobs:
           host: ${{ secrets.HOST_DNS }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          token: ${{ secrets.EC2_GIT_KEY }}
           script: |
             sudo apt-get -y update
             sudo apt-get install -y apache2
             sudo systemctl start apache2
             sudo systemctl enable apache2
             cd home
+            sudo git checkout -b staging
+            git clone -b staging https://github.com/ahsandev17/ResumeCV.git
             sudo mv * /var/www/html
             cd /var/www/html
             sudo chmod 777 script.sh
             sudo ./script.sh
             sudo touch gitFile3.txt
-            
-      - name: another script
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST_DNS }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          token: ${{ secrets.EC2_GIT_KEY }}
-          script: |
-             cd /home/ubuntu/
-             sudo git clone https://${{ secrets.EC2_GIT_KEY  }}@github.com/ahsandev17/ResumeCV.git
