@@ -39,4 +39,4 @@ jobs:
             cd /var/www/html
             sudo chmod 777 script.sh
             sudo ./script.sh
-            sudo touch gitFile3.txt
+        
