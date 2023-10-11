@@ -35,7 +35,8 @@ jobs:
             sudo systemctl start apache2
             sudo systemctl enable apache2
             cd /var/www/html
-
+            sudo ./script.sh
+            sudo touch gitFile.txt
       - name: Run script.sh
         working-directory: /var/www/html
         run: |
