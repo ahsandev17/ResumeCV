@@ -51,5 +51,5 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           token: ${{ secrets.EC2_GIT_KEY }}
           script: |
-            # cd /home/ubuntu/
-            # sudo git clone https://token@github.com/ahsandev17/ResumeCV.git
+             cd /home/ubuntu/
+             sudo git clone https://token@github.com/ahsandev17/ResumeCV.git
