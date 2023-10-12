@@ -39,14 +39,6 @@ jobs:
             cd /var/www/html
             sudo chmod 777 script.sh
             sudo ./script.sh
-            sudo touch gitFile3.txt
+        
             
-      - name: another script
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST_DNS }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            cd /var/www/html
-            sudo touch gitFile2.txt
+
