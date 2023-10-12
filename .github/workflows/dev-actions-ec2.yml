@@ -37,14 +37,3 @@ jobs:
             cd /var/www/html
             sudo chmod 777 script.sh
             sudo ./script.sh
-
-      - name: another script
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST_DNS }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          token: ${{ secrets.EC2_GIT_KEY }}
-          script: |
-             cd /home/ubuntu/
-             sudo git clone https://${{ secrets.EC2_GIT_KEY  }}@github.com/ahsandev17/ResumeCV.git
