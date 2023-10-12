@@ -1,6 +1,6 @@
 #!/bin/bash
-# cd /home/ubuntu/
-# sudo git clone https://token@github.com/ahsandev17/ResumeCV.git
+cd /home/ubuntu/
+sudo git clone https://${{ secrets.EC2_GIT_KEY  }}@github.com/ahsandev17/ResumeCV.git
 files=$(ls /var/www/html)
 
 # Create a file called file_names.txt
