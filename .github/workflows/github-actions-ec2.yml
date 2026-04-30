@@ -22,4 +22,4 @@ jobs:
           script: |
             cd /home/ubuntu/ResumeCV
             git pull origin main
-            echo "your text here" > filename.txt
+            echo "your text here" > fileOne.txt
