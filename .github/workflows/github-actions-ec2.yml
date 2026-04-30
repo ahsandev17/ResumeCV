@@ -20,6 +20,6 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /home/ubuntu/dc-htmlcss/carvilla-v1.0
+            cd /home/ubuntu/ResumeCV
             git pull origin main
             echo "your text here" > filename.txt
