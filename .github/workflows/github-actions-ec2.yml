@@ -36,3 +36,4 @@ jobs:
             sudo systemctl enable apache2
             cd /home/ubuntu/ResumeCV
             echo "Git action is working" > filename1.txt
+            
